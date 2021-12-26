@@ -12,8 +12,40 @@ export default {
                     type: 'item',
                     url: '/dashboard/default',
                     icon: 'feather icon-home',
-                }
-            ]
+                },
+                {
+                    id: 'menu-level',
+                    title: 'Menu',
+                    type: 'collapse',
+                    icon: 'feather icon-menu',
+                    children: [
+                        {
+                            id: 'menu-visitor',
+                            title: 'Visitor',
+                            type: 'item',
+                            url: '/tables/visitor',
+                        },
+                        {
+                            id: 'menu-mobil',
+                            title: 'Mobil',
+                            type: 'item',
+                            url: '/tables/visitor',
+                        },
+                        {
+                            id: 'menu-photobooth',
+                            title: 'Photobooth',
+                            type: 'item',
+                            url: '/tables/visitor',
+                        },
+                        {
+                            id: 'menu-games',
+                            title: 'Games',
+                            type: 'item',
+                            url: '/tables/visitor',
+                        },
+                    ],
+                },
+            ],
         },
         {
             id: 'ui-element',
