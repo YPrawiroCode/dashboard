@@ -1,5 +1,5 @@
 const IMAGES = {
-  threeLine: require('./bars-solid.svg')
+  threeLine: require('./solid-bar.png')
 }
 
 export default IMAGES;
