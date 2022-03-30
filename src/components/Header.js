@@ -1,15 +1,11 @@
 import "./Header.css"
-import IMAGES from "../images/index"
+// import IMAGES from "../images/index"
 
 const Header = (props) => {
   return(
-    <div>
-      <div className="main-header">
-        <img src={IMAGES.threeLine} alt=""/>
-        <div>
-          <h2>Welcome, admin</h2>
-
-        </div>
+    <div className="main-header">
+      <div className="text-admin">
+        <h2>Welcome, admin</h2>
       </div>
       <div className="float-bar-title">
         <h1>Dashboard</h1>
