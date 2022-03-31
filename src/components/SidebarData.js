@@ -13,7 +13,7 @@ export const SidebarData = [
   },
   {
     title: 'Visitor',
-    path: '/visitor',
+    path: `/visitor`,
     icon: <AiIcons.AiFillDatabase />,
     cName: 'nav-text',
     iconClosed: <RiIcons.RiArrowDownSFill />,

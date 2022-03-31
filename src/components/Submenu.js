@@ -21,17 +21,17 @@ const SidebarLink = styled(Link)`
 `;
 
 const DropdownLink = styled(Link)`
-  background: #414757;
+  background: rgb(237, 244, 245);
   height: 60px;
   padding-left: 3rem;
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #f5f5f5;
+  color: #000;
   font-size: 18px;
   
   &:hover {
-    background: #632ce4;
+    background: #1a83ff;
     cursor: pointer;
   }
 `;
@@ -47,7 +47,7 @@ const Submenu = ({ item }) => {
 
   return(
     <>
-      <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
+      <SidebarLink to={item.path !== '/visitor' ? item.path : '#'} onClick={item.subNav && showSubnav}>
         <div>
           {item.icon}
           <SidebarLabel>
