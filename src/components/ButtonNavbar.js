@@ -12,7 +12,7 @@ const ButtonNavbar = (props) => {
         <Button variant="outline-secondary">Logout</Button>
       </div>
     </div>
-  )
+  ) 
 }
 
 export default ButtonNavbar
