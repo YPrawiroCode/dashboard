@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import { IconContext } from "react-icons";
 import Submenu from "./Submenu";
+import ButtonNavbar from "./ButtonNavbar";
 
 const Nav = styled.div`
   background: rgb(79, 198, 219);
@@ -82,8 +83,13 @@ const NavBar = (props) => {
             <AiIcons.AiOutlineClose onClick={showSidebar} />
           </NavIcon>
           {SidebarData.map((item, index) => {
-            return <Submenu item={item} key={index} />;
+            return (
+              <>
+              <Submenu item={item} key={index} />
+              </>
+            )
           })}
+          <ButtonNavbar className="btn-navbar"/>
         </SidebarWrap>
       </SidebarNav>
       {/* <div className="navbar">

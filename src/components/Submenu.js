@@ -17,6 +17,7 @@ const SidebarLink = styled(Link)`
     background: #1a83ff;
     border-left: 4px solid #632ce4;
     cursor: pointer;
+    color: #000;
   }
 `;
 
@@ -33,6 +34,7 @@ const DropdownLink = styled(Link)`
   &:hover {
     background: #1a83ff;
     cursor: pointer;
+    color: #000;
   }
 `;
 

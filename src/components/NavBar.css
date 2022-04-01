@@ -1,3 +1,14 @@
+button{
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  width: 14rem;
+  height: 3rem;
+  margin: 10px;
+  cursor: pointer;
+}
+
 .navbar {
   background-color: rgb(79, 198, 219);
   height: 80px;
