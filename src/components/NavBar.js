@@ -69,15 +69,18 @@ const NavBar = (props) => {
 
   const showSidebar = () => setSidebar(!sidebar)
 
+  const count = () => {
+    return Math.random()
+  }
   return(
-    <>
+    <div key={count}>
     <IconContext.Provider value={{color:'#000'}}>
       <Nav>
         <NavIcon to='#'>
           <FaIcons.FaBars onClick={showSidebar} />
         </NavIcon>
       </Nav>
-      <SidebarNav sidebar={sidebar}>
+      <SidebarNav sidebar={sidebar} >
         <SidebarWrap ref={menuRef}>
           <NavIcon to='#'>
             <AiIcons.AiOutlineClose onClick={showSidebar} />
@@ -119,7 +122,7 @@ const NavBar = (props) => {
         </ul>
       </nav> */}
     </IconContext.Provider>
-    </>
+    </div>
   )
 }
 
