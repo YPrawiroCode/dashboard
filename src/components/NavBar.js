@@ -69,11 +69,8 @@ const NavBar = (props) => {
 
   const showSidebar = () => setSidebar(!sidebar)
 
-  const count = () => {
-    return Math.random()
-  }
   return(
-    <div key={count}>
+    <div>
     <IconContext.Provider value={{color:'#000'}}>
       <Nav>
         <NavIcon to='#'>
@@ -87,40 +84,14 @@ const NavBar = (props) => {
           </NavIcon>
           {SidebarData.map((item, index) => {
             return (
-              <>
+              <div key ={index}>
               <Submenu item={item} key={index} />
-              </>
+              </div>
             )
           })}
           <ButtonNavbar className="btn-navbar"/>
         </SidebarWrap>
       </SidebarNav>
-      {/* <div className="navbar">
-        <Link to="#" className="menu-bars-open">
-          <FaIcons.FaBars onClick={showSidebar} />
-        </Link>
-      </div> */}
-
-      {/* <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-        <ul className="nav-menu-items" onClick={showSidebar}>
-          <li className="navbar-toggle">
-            <Link to="#" className='menu-bars-close'>
-              <AiIcons.AiOutlineClose />
-            </Link>
-          </li>
-          {SidebarData.map((item, index) => {
-            return <Submenu item={item} key={index} />;
-            // (
-              // <li key={index} className={item.cName}>
-              //   <Link to={item.path}>
-              //     {item.icon}
-              //     <span>{item.title}</span>
-              //   </Link>
-              // </li>
-            // )
-          })}
-        </ul>
-      </nav> */}
     </IconContext.Provider>
     </div>
   )

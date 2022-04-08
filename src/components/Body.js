@@ -68,10 +68,6 @@ const Body = (props) => {
       );
     }, [repo, search, sorting.field, sorting.order, currentPage, ITEMS_PER_PAGE])
 
-  console.log(repo)
-  console.log(currentPage)
-  console.log(ITEMS_PER_PAGE)
-
   const headers = [
     { name: "No", field:"id", sortable: false },
     { name: "Kategori", field:"name", sortable: true },
@@ -91,7 +87,7 @@ const Body = (props) => {
         </div>
         <div className="card-head-body">
             <p className="text-atas">Total Visitor</p>
-            <p className="text-bawah">Total visitor semua mobil adalah { props.index } orang</p>
+            <p className="text-bawah">Total visitor semua mobil adalah { totalItems } orang</p>
         </div>
         <div className="head-table">
           <p className="txt1">Show</p>
@@ -115,9 +111,9 @@ const Body = (props) => {
               }
             />
             <tbody>
-              {reposData.map( (repo) => (
-                <tr>
-                  <th scope="row">{repo.id}</th>
+              {reposData.map( (repo, index) => (
+                <tr key={repo.id}>
+                  <th scope="row">{index + 1}</th>
                   <th>{repo.name}</th>
                   <th>{repo.email}</th>
                 </tr>) )}
@@ -127,7 +123,7 @@ const Body = (props) => {
         </div>
         <div className="footer-table">
           <p className="txt-footer-table">
-            Showing 1 to { currentPage } of { totalItems } entries
+            Showing page { currentPage } from  { totalItems } entries
           </p>          
               <Pagination
                 total={totalItems}

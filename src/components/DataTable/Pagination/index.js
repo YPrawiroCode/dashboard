@@ -13,9 +13,9 @@ const PaginationComponent = ( { total=0, itemsPerPage=10, currentPage=1, onPageC
 
   const paginationItems = useMemo(() => {
     
-    const createPaginationItem = (i) => {
+    const createPaginationItem = (i, index) => {
       return <Pagination.Item
-          key={i}
+          key={index}
           active={i === currentPage}
           onClick={() => onPageChange(i)}
         >
@@ -28,10 +28,12 @@ const PaginationComponent = ( { total=0, itemsPerPage=10, currentPage=1, onPageC
     pages.push(createPaginationItem(1));
 
     pages.push(<Pagination.Ellipsis />);
-    const midpoint = totalPages /2;
+    const midpoint = Math.floor(totalPages /2);
 
     for (let i = midpoint; i<= midpoint + 4; i++) {
-      pages.push(createPaginationItem(i));
+      if(i < totalPages ){
+        pages.push(createPaginationItem(i));
+      }
     }
 
     pages.push(<Pagination.Ellipsis />);
@@ -59,12 +61,12 @@ const PaginationComponent = ( { total=0, itemsPerPage=10, currentPage=1, onPageC
       <Pagination.Prev 
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-      />
+      >Previous</Pagination.Prev>
       {paginationItems}
       <Pagination.Next 
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-      />
+      >Next</Pagination.Next>
     </Pagination>
   )
 }
