@@ -91,16 +91,20 @@ const Body = (props) => {
         </div>
         <div className="head-table">
           <p className="txt1">Show</p>
-          <Form.Select value={value} onChange={handleChange} className='select-menu-show' aria-label="Default select example">
-            <option value="10">10</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </Form.Select>
+          <div>
+            <Form.Select value={value} onChange={handleChange} className='select-menu-show' aria-label="Default select example">
+              <option value="10">10</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </Form.Select>
+          </div>
           <p className="txt2">Entries</p>
-          <SearchBar onSearch={(value) => {
-            setSearch(value);
-            setCurrentPage(1);
-          }}/>
+          <div className="search-bar">
+            <SearchBar onSearch={(value) => {
+              setSearch(value);
+              setCurrentPage(1);
+            }}/>
+          </div>
         </div>
         <div className="body-table">
           <Table striped bordered hover>

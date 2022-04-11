@@ -12,8 +12,11 @@
 }
 
 .head-table{
-  display: flex;
-  justify-content:left;
+  position: flex;
+  display:flex;
+  /* justify-content: space-between;
+  float: left; */
+  /* flex-shrink: 1; */
 }
 
 .txt1{
@@ -26,11 +29,12 @@
 .txt2{
   position: flex;
   display: flex;
-  margin-left: 10px;
+  margin-left: 40px;
 }
 
 .search-bar{
-  margin-left: 1200px;
+  margin-left: 590px;
+  float: right;
 }
 
 .body-table{
@@ -58,7 +62,9 @@
 }
 
 .select-menu-show{
-  width: 5rem;
+  /* display: flex; */
+  /* position: flex; */
+  /* height: fit-content; */
   margin: 0px 0px 10px 35px;
   float: left;
 }
