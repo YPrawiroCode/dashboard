@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { getToken, removeUserSession, setUserSession } from './Utils/Common';
+import axios from 'axios';
 import Dashboard from './pages/Dashboard';
 import NoPage from './pages/NoPage'
 import Mobil from './pages/Mobil'
@@ -9,11 +11,38 @@ import Games from './pages/Games'
 import Login from './pages/Login';
 import WithoutNav from './components/Layout/WithoutNav';
 import WithNav from './components/Layout/WithNav';
+import PrivateRoute from './Utils/PrivateRoute';
+import PublicRoute from './Utils/PublicaRoute';
 
 function App() {
+
+  const [authLoading, setAuthLoading] = useState(true);
+
+  useEffect(() => {
+    const token = getToken();
+    if (!token) {
+      return;
+    }
+
+    axios.get(`http://localhost:4000/verifyToken?token=${token}`).then(response => {
+      setUserSession(response.data.token, response.data.user);
+      setAuthLoading(false);
+    }).catch(error => {
+      removeUserSession();
+      setAuthLoading(false);
+    });
+  }, []);
+
+    if (authLoading && getToken()) {
+      return <div className="content">Checking Authentication...</div>
+    }
+
   return (
     <>
       <Router>
+        <NavLink exact activeClassName="active" to="/">Home</NavLink>
+        <NavLink activeClassName="active" to="/login">Login</NavLink><small>(Access without token only)</small>
+        <NavLink activeClassName="active" to="/dashboard">Dashboard</NavLink><small>(Access with token only)</small>
         <Routes>
           <Route element={<WithoutNav />}>
             <Route exact path='/login' element={<Login />} />
