@@ -2,19 +2,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import '../components/ButttonNavbar.css';
 import * as MdIcons from "react-icons/md"
-import { useNavigate } from 'react-router-dom';
-import { getUser, removeUserSession } from '../Utils/Common';
+// import { useNavigate } from 'react-router-dom';
+// import { getUser, removeUserSession } from '../Utils/Common';
 
 
 const ButtonNavbar = (props) => {
   
-  const user = getUser();
+  // const user = getUser();
   
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   
   const handleLogout = () => {
-    removeUserSession();    
-    navigate('/login');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.href = "/login";
   }
 
 
