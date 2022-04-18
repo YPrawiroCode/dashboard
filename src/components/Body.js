@@ -1,10 +1,13 @@
 import React, { useEffect, useMemo, useState   } from "react";
 import "./Body.css"
 import { Button, Table, Form } from 'react-bootstrap';
+// import { CSVLink } from 'react-csv';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { TableHeader, Pagination, SearchBar } from "../components/DataTable/index";
 import useFullPageLoader from "./hooks/useFullPageLoader";
 // import GetData from "./GetData";
+
+// const axios = require('axios');
 
 const Body = (props) => {
   const [repo, setRepo] = useState([]);
@@ -13,6 +16,8 @@ const Body = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
   const [sorting, setSorting] = useState({ field: "", order: "" })
+  // const [loading, setLoading] = useState(false);
+  // const [userData, setUserData] = useState([]);
 
 
   const getInitialState = () => {
@@ -37,6 +42,31 @@ const Body = (props) => {
 
     getData();
   }, []);
+
+  // useEffect(() => {
+  //   getUserData();
+  // }, []);
+
+  // const getUserData = () => {
+  //   setLoading(true);
+  //   axios.get('https://jsonplaceholder.typicode.com/comments')
+  //       .then((res) => {
+  //         setUserData(res.data);
+  //         setLoading(false);
+  //       })
+  //       .catch((err) => {
+  //         console.log("Error: ", err);
+  //         setLoading(false);
+  //       })
+  // }
+
+  // const fileName = "Report-Data";
+  
+  // const data = [
+  //   { firstname: "Ahmed", lastname: "Tomi", email: "ah@smthing.co.com" },
+  //   { firstname: "Raed", lastname: "Labes", email: "rl@smthing.co.com" },
+  //   { firstname: "Yezzi", lastname: "Min l3b", email: "ymin@cocococo.com" }
+  // ];
 
   const reposData = useMemo(() => {
     let computedRepos = repo;
@@ -83,7 +113,14 @@ const Body = (props) => {
       <div className="wrap-content">
         <div className="section-a">
           <h3>Total Visitor</h3>
-          <Button variant="primary">Download report</Button>
+          <Button variant="primary">
+            {/* <CSVLink
+              data={data} 
+              headers={headers}
+            >
+              Download me
+            </CSVLink> */}
+          </Button>
         </div>
         <div className="card-head-body">
             <p className="text-atas">Total Visitor</p>
@@ -117,7 +154,7 @@ const Body = (props) => {
             <tbody>
               {reposData.map( (repo, index) => (
                 <tr key={repo.id}>
-                  <th scope="row">{index + 1}</th>
+                  <th scope="row">{repo.id}</th>
                   <th>{repo.name}</th>
                   <th>{repo.email}</th>
                 </tr>) )}

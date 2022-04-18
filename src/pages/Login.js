@@ -2,7 +2,8 @@ import React, { useRef, useState} from "react";
 // import AuthContext from "../context/AuthProvider";
 import './Login.css'
 // import axios from '../api/axios';
-import swal from "sweetalert";
+import Swal from 'sweetalert2'
+import '../sweetalert2.scss'
 // import { useNavigate } from 'react-router-dom'
 import { Button, Form } from 'react-bootstrap';
 // import { setUserSession } from '../Utils/Common';
@@ -113,9 +114,12 @@ const Login = (props) =>{
       password
     });
     if ('token' in response) {
-      swal("Success", response.message, "success", {
-        buttons: false,
-        timer: 2000,
+      Swal.fire({
+        position: 'middle',
+        icon: 'success',
+        title: 'Login Success',
+        showConfirmButton: false,
+        timer: 1500
       })
       .then((value) => {
         localStorage.setItem('token', response['token']);
@@ -123,7 +127,11 @@ const Login = (props) =>{
         window.location.href = "/dashboard";
       });
     } else {
-      swal("Failed", response.message, "error");
+        Swal.fire({
+          icon: 'error',
+          title: 'Gagal Login',
+          text: 'User atau Password Salah',
+        })
     }
   }
 

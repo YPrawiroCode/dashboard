@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import { getToken, removeUserSession, setUserSession } from './Utils/Common';
 // import axios from 'axios';
 import Dashboard from './pages/Dashboard';
@@ -9,7 +9,7 @@ import Mobil from './pages/Mobil'
 import PhotoBooth from './pages/PhotoBooth'
 import Games from './pages/Games'
 import Login from './pages/Login';
-import WithoutNav from './components/Layout/WithoutNav';
+// import WithoutNav from './components/Layout/WithoutNav';
 import WithNav from './components/Layout/WithNav';
 // import PrivateRoute from './Utils/PrivateRoute';
 // import PublicRoute from './Utils/PublicaRoute';
