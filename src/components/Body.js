@@ -4,7 +4,7 @@ import { Button, Table, Form } from 'react-bootstrap';
 // import { CSVLink } from 'react-csv';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { TableHeader, Pagination, SearchBar } from "../components/DataTable/index";
-import useFullPageLoader from "./hooks/useFullPageLoader";
+// import useFullPageLoader from "./hooks/useFullPageLoader";
 // import GetData from "./GetData";
 
 // const axios = require('axios');
@@ -13,7 +13,7 @@ const XLSX = require('xlsx')
 
 const Body = (props) => {
   const [repo, setRepo] = useState([]);
-  const [loader, showLoader, hideLoader] = useFullPageLoader();
+  // const [loader, showLoader, hideLoader] = useFullPageLoader();
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
@@ -32,12 +32,12 @@ const Body = (props) => {
   
   useEffect(() => {
     const getData = () => {
-      showLoader();
+      // showLoader();
 
       fetch("https://jsonplaceholder.typicode.com/comments")
         .then(response => response.json())
         .then(json => {
-          hideLoader();
+          // hideLoader();
           setRepo(json);
         });
     }
@@ -64,17 +64,17 @@ const Body = (props) => {
 
   // const fileName = "Report-Data";
   
-  const convertJsonToExcel = () => {
+  function convertJsonToExcel() {
     const workSheet = XLSX.utils.json_to_sheet(repo);
     const workBook = XLSX.utils.book_new();
 
-    XLSX.utils.book_append_sheet(workBook, workSheet, "students")
+    XLSX.utils.book_append_sheet(workBook, workSheet, "students");
 
-    XLSX.write(workBook, {bookType:'xlsx', type:'buffer'})
+    XLSX.write(workBook, { bookType: 'xlsx', type: 'buffer' });
 
-    XLSX.write(workBook,{bookType:"xlsx", type:"binary"})
+    XLSX.write(workBook, { bookType: "xlsx", type: "binary" });
 
-    XLSX.writeFile(workBook,"reportData.xlsx")
+    XLSX.writeFile(workBook, "reportData.xlsx");
   }
 
   const reposData = useMemo(() => {
@@ -180,7 +180,7 @@ const Body = (props) => {
         </div>
       </div>
     </div>
-    {loader}
+    {/* {loader} */}
     </>
   )
 }
