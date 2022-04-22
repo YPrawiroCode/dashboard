@@ -74,9 +74,9 @@
   width: 98%;
   height: auto;
   margin: 100px 0px 0 0px;
-  /* display: solid; */
+  display: solid;
   border-radius: 5px;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   align-items: center;
   background: rgb(241, 253, 255);
 }
@@ -99,6 +99,7 @@
   /* text-align: center; */
   margin: 60px 20px ;
 }
+
 .card-head-body p{
   margin: 15px 0px 0px 20px;
 }
@@ -118,44 +119,19 @@
 
  /* Extra small devices (phones, 600px and down) */
  @media only screen and (max-width: 600px) {
-  .section-a{
-    position: flex;
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 50px 0 50px;
-  }
 
-  .section-a h3{
-    font-size: small;
-  }
-
-  /* .wrap-content div button{
-    background-color: aqua;
-    border-radius: 5px;
-    height: 40px;
-    width: 120px;
-    margin-top: 10px;
-  } */
-
-  .wrap-content{
-    width: 93%;
-    height: 20rem;
-    margin: -470px 0px 0 5px;
-    /* display: solid; */
-    border-radius: 5px;
-    /* justify-content: space-between; */
-    align-items: center;
-    background: rgb(241, 253, 255);
-  }
+  
  }
 
  /* Small devices (portrait tablets and large phones, 600px and up) */
  @media only screen and (min-width: 600px) {
-
+  
+  
  }
  
  /* Medium devices (landscape tablets, 768px and up) */
  @media only screen and (min-width: 768px) {
+  
 
  }
  
@@ -168,67 +144,3 @@
  @media only screen and (min-width: 1200px) {
 
  } 
-
-/* @media (max-width: 680px) {
-  .section-a{
-    position: flex;
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 50px 0 50px;
-  }
-
-  .section-a h3{
-    font-size: small;
-  }
-
-  .wrap-content div button{
-    background-color: aqua;
-    border-radius: 5px;
-    height: 40px;
-    width: 120px;
-    margin-top: 10px;
-  }
-
-  .wrap-content{
-    width: 93%;
-    height: 40rem;
-    margin: -50px 0px 0 5px;
- 
-    border-radius: 5px;
-   
-    align-items: center;
-    background: rgb(241, 253, 255);
-  }
-} */
-
-/* @media (max-width: 565px) {
-  .section-a{
-    position: flex;
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 30px 0 30px;
-  }
-
-  .section-a h3{
-    font-size: small;
-  }
-
-  .wrap-content div button{
-    background-color: aqua;
-    border-radius: 5px;
-    height: 40px;
-    width: 90px;
-    margin-top: 10px;
-  }
-
-  .wrap-content{
-    width: 93%;
-    height: 40rem;
-    margin: -50px 0px 0 5px;
- 
-    border-radius: 5px;
-   
-    align-items: center;
-    background: rgb(241, 253, 255);
-  }
-} */

@@ -25,21 +25,37 @@ const PaginationComponent = ( { total=0, itemsPerPage=10, currentPage=1, onPageC
 
     const pages = [];
 
-    pages.push(createPaginationItem(1));
+    if(totalPages > 10){
+      pages.push(createPaginationItem(1));
+    }
 
-    pages.push(<Pagination.Ellipsis />);
+    if( 10 <  totalPages ){
+      pages.push(<Pagination.Ellipsis />);
+    }
+
     const midpoint = Math.floor(totalPages /2);
 
-    for (let i = midpoint; i<= midpoint + 4; i++) {
-      if(i < totalPages ){
-        pages.push(createPaginationItem(i));
+    if(totalPages > 10){
+      for (let i = midpoint; i<= midpoint + 4; i++) {
+        if(i < totalPages ){
+          pages.push(createPaginationItem(i));
+        }
+      }
+    }else {
+      for (let i = 0; i <= totalPages - 1; i++) {
+        if(i < totalPages ){
+          pages.push(createPaginationItem(i + 1));
+        }
       }
     }
 
-    pages.push(<Pagination.Ellipsis />);
+    if( 10 < totalPages ){
+      pages.push(<Pagination.Ellipsis />);
+    }
 
-    pages.push(createPaginationItem(totalPages));
-
+    if(totalPages > 10){
+      pages.push(createPaginationItem(totalPages));
+    }
     // for(let i=1; i <= totalPages; i++) {
       // pages.push(
       //   <Pagination.Item 

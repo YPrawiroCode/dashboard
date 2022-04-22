@@ -9,6 +9,8 @@ import useFullPageLoader from "./hooks/useFullPageLoader";
 
 // const axios = require('axios');
 
+const XLSX = require('xlsx')
+
 const Body = (props) => {
   const [repo, setRepo] = useState([]);
   const [loader, showLoader, hideLoader] = useFullPageLoader();
@@ -62,11 +64,18 @@ const Body = (props) => {
 
   // const fileName = "Report-Data";
   
-  // const data = [
-  //   { firstname: "Ahmed", lastname: "Tomi", email: "ah@smthing.co.com" },
-  //   { firstname: "Raed", lastname: "Labes", email: "rl@smthing.co.com" },
-  //   { firstname: "Yezzi", lastname: "Min l3b", email: "ymin@cocococo.com" }
-  // ];
+  const convertJsonToExcel = () => {
+    const workSheet = XLSX.utils.json_to_sheet(repo);
+    const workBook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(workBook, workSheet, "students")
+
+    XLSX.write(workBook, {bookType:'xlsx', type:'buffer'})
+
+    XLSX.write(workBook,{bookType:"xlsx", type:"binary"})
+
+    XLSX.writeFile(workBook,"reportData.xlsx")
+  }
 
   const reposData = useMemo(() => {
     let computedRepos = repo;
@@ -107,19 +116,15 @@ const Body = (props) => {
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
   return(
     <>
     <div className="main-body">
       <div className="wrap-content">
         <div className="section-a">
           <h3>Total Visitor</h3>
-          <Button variant="primary">
-            {/* <CSVLink
-              data={data} 
-              headers={headers}
-            >
-              Download me
-            </CSVLink> */}
+          <Button variant="primary" onClick={convertJsonToExcel}>
+            Download Report
           </Button>
         </div>
         <div className="card-head-body">
