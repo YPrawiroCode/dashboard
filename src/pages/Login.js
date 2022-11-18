@@ -1,28 +1,27 @@
-import React, { useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 // import AuthContext from "../context/AuthProvider";
-import './Login.css'
+import "./Login.css";
 // import axios from '../api/axios';
-import Swal from 'sweetalert2'
-import '../sweetalert2.scss'
+import Swal from "sweetalert2";
+import "../sweetalert2.scss";
 // import { useNavigate } from 'react-router-dom'
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form } from "react-bootstrap";
 // import { setUserSession } from '../Utils/Common';
 
 // const LOGIN_URL = '/api/auth/login';
 
 async function loginUser(credentials) {
-  return fetch('https://foreatapi.herokuapp.com/api/auth/login', {
-    method: 'POST',
+  return fetch("https://kind-pink-giraffe-veil.cyclic.app/api/login/customer", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
- }
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+}
 
-const Login = (props) =>{
-  const [username, setUserName] = useState();
+const Login = (props) => {
+  const [phone, setUserName] = useState();
   const [password, setPassword] = useState();
   // const [error, setError] = useState(null);
   // const [loading, setLoading] = useState(false);
@@ -46,7 +45,7 @@ const Login = (props) =>{
 
   // const useFormInput = initialValue => {
   //   const [value, setValue] = useState(initialValue);
-   
+
   //   const handleChange = e => {
   //     setValue(e.target.value);
   //   }
@@ -107,38 +106,41 @@ const Login = (props) =>{
   //   }
   // }
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await loginUser({
-      username,
-      password
+      phone,
+      password,
     });
-    if ('token' in response) {
+    console.log(
+      "🚀 ~ file: Login.js ~ line 115 ~ handleSubmit ~ response",
+      response
+    );
+    if ("token" in response) {
       Swal.fire({
-        position: 'middle',
-        icon: 'success',
-        title: 'Login Success',
+        position: "middle",
+        icon: "success",
+        title: "Login Success",
         showConfirmButton: false,
-        timer: 1500
-      })
-      .then((value) => {
-        localStorage.setItem('token', response['token']);
-        localStorage.setItem('user', JSON.stringify(response['user']));
+        timer: 1500,
+      }).then((value) => {
+        localStorage.setItem("token", response["token"]);
+        localStorage.setItem("user", JSON.stringify(response["user"]));
         window.location.href = "/dashboard";
       });
     } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Gagal Login',
-          text: 'User atau Password Salah',
-        })
+      Swal.fire({
+        icon: "error",
+        title: "Gagal Login",
+        text: "User atau Password Salah",
+      });
     }
-  }
+  };
 
-  return(
+  return (
     <>
       {/* {success ? ( */}
-        {/* <section>
+      {/* <section>
             <h1>You are logged in!</h1>
             <br />
             <p>
@@ -146,61 +148,65 @@ const Login = (props) =>{
             </p>
         </section>
           ) : ( */}
-              <section>
-                <div className="login">
-                  <div className="form-login">
-                    <div className="up-txt">
-                      <h1 className="txt1">LOGIN</h1>
-                    </div>
-                    <div className="form-login2"></div>
-                    {/* <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
-                    <Form onSubmit={handleSubmit}>
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="username" placeholder="Enter email" 
-                          id="username"
-                          ref={userRef}
-                          autoComplete="off"
-                          onChange={(e) => setUserName(e.target.value)}
-                          // value={user}
-                          required
-                        />
-                        <Form.Text className="text-muted">
-                          We'll never share your email with anyone else.
-                        </Form.Text>
-                      </Form.Group>
+      <section>
+        <div className="login">
+          <div className="form-login">
+            <div className="up-txt">
+              <h1 className="txt1">LOGIN</h1>
+            </div>
+            <div className="form-login2"></div>
+            {/* <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  type="phone"
+                  placeholder="Enter phone"
+                  id="phone"
+                  ref={userRef}
+                  autoComplete="off"
+                  onChange={(e) => setUserName(e.target.value)}
+                  // value={user}
+                  required
+                />
+                <Form.Text className="text-muted">
+                  We'll never share your email with anyone else.
+                </Form.Text>
+              </Form.Group>
 
-                      <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" 
-                          id="password"
-                          onChange={(e) => setPassword(e.target.value)}
-                          // value={pwd}
-                          required
-                        />
-                      </Form.Group>
-                      {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  id="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  // value={pwd}
+                  required
+                />
+              </Form.Group>
+              {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Remember Me" />
                       </Form.Group> */}
-                      {/* {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br /> */}
-                      <div>
-                        <Button variant="primary" type="submit"
-                          className="btn-login" 
-                          // disabled={loading} 
-                        >
-                          Login
-                          {/* {loading ? 'Loading...' : 'Login'} */}
-                        </Button>
-                      </div>  
-                    </Form>
-                  </div>
-                </div>
-              </section>
-            )
-      {/* } */}
+              {/* {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br /> */}
+              <div>
+                <Button
+                  variant="primary"
+                  type="submit"
+                  className="btn-login"
+                  // disabled={loading}
+                >
+                  Login
+                  {/* {loading ? 'Loading...' : 'Login'} */}
+                </Button>
+              </div>
+            </Form>
+          </div>
+        </div>
+      </section>
+      ){/* } */}
     </>
-  )
-
-}
+  );
+};
 
 export default Login;
